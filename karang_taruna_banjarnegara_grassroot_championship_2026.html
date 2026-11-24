@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Karang Taruna Banjarnegara Grassroot Championship 2026</title>
+  <!-- Memuat Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Memuat Font Inter agar angka klasemen dan jadwal terbaca tajam di perangkat mobile -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-600 selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- HEADER UTAMA TURNAMEN                                                 -->
+  <!-- ===================================================================== -->
+  <header class="bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-950 text-white shadow-lg relative overflow-hidden border-b border-emerald-800/60">
+    <!-- Ornamen garis lapangan sepak bola tipis -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="w-72 h-72 rounded-full border-4 border-white -top-24 -right-20 absolute"></div>
+      <div class="w-44 h-44 rounded-full border-4 border-white -bottom-24 -left-12 absolute"></div>
+      <div class="h-full w-px bg-white/60 left-1/2 top-0 absolute hidden sm:block"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 pt-6 pb-5 sm:pt-8 sm:pb-7 relative z-10">
+      <div class="flex flex-col items-center text-center">
+        <!-- Lencana Turnamen -->
+        <div class="inline-flex items-center gap-2 bg-emerald-950/80 border border-amber-400/30 text-amber-200 text-[11px] sm:text-xs font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full mb-3 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+          <span>Official Tournament Match Center</span>
+        </div>
+
+        <!-- Judul Utama -->
+        <h1 class="text-xl sm:text-3xl md:text-4xl font-black tracking-tight leading-tight uppercase max-w-3xl text-white drop-shadow-sm">
+          KARANG TARUNA BANJARNEGARA GRASSROOT CHAMPIONSHIP 2026
+        </h1>
+
+        <!-- Subjudul Lokasi -->
+        <div class="mt-2.5 inline-flex items-center gap-1.5 text-amber-300 font-extrabold text-xs sm:text-sm tracking-[0.18em] uppercase">
+          <svg class="w-4 h-4 shrink-0 text-amber-400" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+          <span>MERDEN, BANJARNEGARA</span>
+        </div>
+
+        <!-- Info Ringkas Format Turnamen -->
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-[11px] sm:text-xs font-bold">
+          <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-emerald-100 backdrop-blur-xs">
+            ⚽ 2 Kategori (KU-10 &amp; KU-12)
+          </span>
+          <span class="px-3 py-1 rounded-full bg-white/10 border border-white/15 text-emerald-100 backdrop-blur-xs">
+            🏟️ 3 Lapangan
+          </span>
+          <span class="px-3 py-1 rounded-full bg-amber-400/20 border border-amber-300/30 text-amber-200 backdrop-blur-xs">
+            🕒 Kick-off 07.40 WIB &bull; Slot 25 Menit
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- PANEL NAVIGASI STICKY (KATEGORI UMUR & SUB-MENU UTAMA)                -->
+  <!-- ===================================================================== -->
+  <nav class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+    <div class="max-w-5xl mx-auto px-3 sm:px-4">
+      <!-- Baris 1: Pemilih Kategori Umur (Pill Besar) -->
+      <div class="grid grid-cols-2 gap-2.5 pt-3 pb-2.5">
+        <button
+          id="btn-kat-KU10"
+          onclick="pilihKategori('KU10')"
+          class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl font-extrabold text-sm sm:text-base transition-all cursor-pointer border-2"
+        >
+          <span>⚽ KU-10 Tahun</span>
+          <span class="text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-black/10">12 Tim</span>
+        </button>
+
+        <button
+          id="btn-kat-KU12"
+          onclick="pilihKategori('KU12')"
+          class="flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl font-extrabold text-sm sm:text-base transition-all cursor-pointer border-2"
+        >
+          <span>🏆 KU-12 Tahun</span>
+          <span class="text-[11px] sm:text-xs font-bold px-2 py-0.5 rounded-full bg-black/10">12 Tim</span>
+        </button>
+      </div>
+
+      <!-- Baris 2: 3 Menu Navigasi Utama -->
+      <div class="grid grid-cols-3 gap-1.5 pb-2.5">
+        <button
+          id="btn-tab-jadwal"
+          onclick="pilihTab('jadwal')"
+          class="py-2 px-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer text-center"
+        >
+          Jadwal &amp; Hasil
+        </button>
+        <button
+          id="btn-tab-klasemen"
+          onclick="pilihTab('klasemen')"
+          class="py-2 px-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer text-center"
+        >
+          Klasemen Live
+        </button>
+        <button
+          id="btn-tab-gugur"
+          onclick="pilihTab('gugur')"
+          class="py-2 px-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer text-center"
+        >
+          Babak Gugur
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================================================================== -->
+  <!-- KONTEN UTAMA APLIKASI                                                 -->
+  <!-- ===================================================================== -->
+  <main class="max-w-5xl w-full mx-auto px-3 sm:px-4 py-5 flex-1">
+    <!-- Banner Notifikasi Sinkronisasi (Hanya muncul jika mode Google Sheets aktif) -->
+    <div id="status-sinkronisasi" class="hidden mb-4 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium items-center justify-between gap-2"></div>
+
+    <!-- Wadah Konten Dinamis -->
+    <div id="konten-utama"></div>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- FOOTER RESMI BERSIH                                                   -->
+  <!-- ===================================================================== -->
+  <footer class="bg-slate-950 text-slate-400 text-xs py-6 px-4 mt-10 border-t border-slate-800">
+    <div class="max-w-5xl mx-auto flex flex-col items-center justify-center text-center gap-1">
+      <p class="font-bold text-slate-200 tracking-wide">
+        &copy; 2026 Karang Taruna Banjarnegara Grassroot Championship &bull; Merden, Banjarnegara
+      </p>
+      <p class="text-[11px] text-slate-500">
+        Panitia Pelaksana Resmi Turnamen Sepak Bola Usia Dini
+      </p>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- LOGIKA & DATA TURNAMEN                                                -->
+  <!-- ===================================================================== -->
+  <script>
+    /*
+    ===========================================================================
+    PANDUAN KHUSUS PANITIA PELAKSANA (TIDAK TAMPIL DI LAYAR PUBLIK)
+    ===========================================================================
+    Halo Panitia! Seluruh pengaturan tim, jadwal, lapangan, skor, dan kartu dapat
+    diubah dengan mudah melalui 2 cara di bawah ini:
+
+    CARA 1: EDIT LANGSUNG DI FILE INI (MODE LOKAL / DEFAULT)
+    1. Buka file index.html ini menggunakan Notepad, Notepad++, atau VS Code.
+    2. Ubah nama-nama tim pada bagian `grup: { A: [...], B: [...], C: [...] }`
+       untuk masing-masing kategori (KU10 dan KU12).
+       PENTING: Pastikan penulisan nama tim pada `grup` dan `jadwalGrup`
+       sama persis (termasuk huruf besar/kecil dan spasi).
+    3. Pengaturan Waktu & Lapangan:
+       - `durasiSlotMenit: 25` secara otomatis menghitung waktu selesai tiap
+         pertandingan (contoh: jam `"07.40"` otomatis tampil `"07.40 - 08.05 WIB"`).
+       - Tersedia 3 lapangan aktif: `"Lapangan 1"`, `"Lapangan 2"`, dan `"Lapangan 3"`.
+    4. Pada daftar `jadwalGrup`, atur jam, lapangan, skor, kartu kuning (`kkA`, `kkB`),
+       kartu merah (`kmA`, `kmB`), dan `status`:
+       - "AKAN MAIN" : Pertandingan belum dimulai (skor diisi null).
+       - "LIVE"      : Pertandingan sedang berlangsung (skor tampil di jadwal,
+                       dan dapat dipratinjau di Klasemen Live).
+       - "SELESAI"   : Pertandingan telah usai (skor & kartu otomatis dikunci
+                       ke Klasemen Live, Peringkat 3 Terbaik, dan Babak Gugur).
+    5. Saat memasuki fase gugur (mulai pukul 13.30 WIB), isi `skorA` dan `skorB`
+       pada bagian `babakGugur` (QF1 s/d FINAL). Jika skor imbang dan dilanjutkan
+       adu penalti, isi juga `penaltiA` dan `penaltiB` agar pemenang otomatis
+       melaju ke babak berikutnya.
+
+    CARA 2: HUBUNGKAN KE GOOGLE SHEETS (MODE LIVE SPREADSHEET OPSIONAL)
+    1. Buat Google Sheets baru dengan 15 kolom header pada Baris 1 (persis):
+       kategori,fase,partai,grup,jam,lapangan,timA,timB,skorA,skorB,kkA,kmA,kkB,kmB,status
+    2. Contoh isi baris data:
+       KU10,GRUP,01,A,07.40,Lapangan 1,Tim A1,Tim A2,2,0,0,0,1,0,SELESAI
+       (Untuk babak gugur, isi kolom fase dengan "GUGUR" dan kolom grup dengan kode
+        partai seperti QF1, QF2, QF3, QF4, SF1, SF2, JUARA3, atau FINAL).
+    3. Di Google Sheets, klik menu: File > Bagikan > Publikasikan ke web.
+    4. Pilih sheet yang sesuai, ubah format dari "Halaman Web" menjadi
+       "Nilai yang dipisahkan koma (.csv)", klik Publikasikan, lalu salin link-nya.
+    5. Tempel link CSV tersebut ke dalam properti `googleSheetCsvUrl: "LINK_ANDA"`
+       di bawah ini.
+    ===========================================================================
+    */
+
+    const DATA_TURNAMEN = {
+      // Isi URL CSV publik Google Sheets di sini jika ingin sinkronisasi otomatis.
+      // Biarkan kosong "" untuk menggunakan data lokal di bawah ini.
+      googleSheetCsvUrl: "",
+
+      // Durasi setiap slot pertandingan dalam menit (digunakan untuk menghitung rentang waktu otomatis)
+      durasiSlotMenit: 25,
+
+      // =======================================================================
+      // DATA KATEGORI KU-10 TAHUN (12 TIM: GRUP A, B, C)
+      // Jadwal menggunakan slot ganjil (07.40, 08.30, 09.20, 10.10, 11.00, 11.50)
+      // pada Lapangan 1 (Grup A), Lapangan 2 (Grup B), dan Lapangan 3 (Grup C)
+      // sehingga setiap tim mendapat jeda istirahat minimal 50 menit antar laga.
+      // =======================================================================
+      KU10: {
+        namaKategori: "KU-10 Tahun",
+        grup: {
+          A: ["Tim A1", "Tim A2", "Tim A3", "Tim A4"],
+          B: ["Tim B1", "Tim B2", "Tim B3", "Tim B4"],
+          C: ["Tim C1", "Tim C2", "Tim C3", "Tim C4"],
+        },
+        jadwalGrup: [
+          // Slot 1: 07.40 - 08.05 WIB
+          { partai: "01", grup: "A", jam: "07.40", lapangan: "Lapangan 1", timA: "Tim A1", timB: "Tim A2", skorA: 2, skorB: 0, kkA: 0, kmA: 0, kkB: 1, kmB: 0, status: "SELESAI" },
+          { partai: "02", grup: "B", jam: "07.40", lapangan: "Lapangan 2", timA: "Tim B1", timB: "Tim B2", skorA: 1, skorB: 1, kkA: 1, kmA: 0, kkB: 0, kmB: 0, status: "SELESAI" },
+          { partai: "03", grup: "C", jam: "07.40", lapangan: "Lapangan 3", timA: "Tim C1", timB: "Tim C2", skorA: 3, skorB: 1, kkA: 0, kmA: 0, kkB: 2, kmB: 0, status: "SELESAI" },
+
+          // Slot 3: 08.30 - 08.55 WIB
+          { partai: "04", grup: "A", jam: "08.30", lapangan: "Lapangan 1", timA: "Tim A3", timB: "Tim A4", skorA: 1, skorB: 0, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "LIVE" },
+          { partai: "05", grup: "B", jam: "08.30", lapangan: "Lapangan 2", timA: "Tim B3", timB: "Tim B4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "06", grup: "C", jam: "08.30", lapangan: "Lapangan 3", timA: "Tim C3", timB: "Tim C4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 5: 09.20 - 09.45 WIB
+          { partai: "07", grup: "A", jam: "09.20", lapangan: "Lapangan 1", timA: "Tim A1", timB: "Tim A3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "08", grup: "B", jam: "09.20", lapangan: "Lapangan 2", timA: "Tim B1", timB: "Tim B3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "09", grup: "C", jam: "09.20", lapangan: "Lapangan 3", timA: "Tim C1", timB: "Tim C3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 7: 10.10 - 10.35 WIB
+          { partai: "10", grup: "A", jam: "10.10", lapangan: "Lapangan 1", timA: "Tim A2", timB: "Tim A4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "11", grup: "B", jam: "10.10", lapangan: "Lapangan 2", timA: "Tim B2", timB: "Tim B4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "12", grup: "C", jam: "10.10", lapangan: "Lapangan 3", timA: "Tim C2", timB: "Tim C4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 9: 11.00 - 11.25 WIB
+          { partai: "13", grup: "A", jam: "11.00", lapangan: "Lapangan 1", timA: "Tim A1", timB: "Tim A4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "14", grup: "B", jam: "11.00", lapangan: "Lapangan 2", timA: "Tim B1", timB: "Tim B4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "15", grup: "C", jam: "11.00", lapangan: "Lapangan 3", timA: "Tim C1", timB: "Tim C4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 11: 11.50 - 12.15 WIB
+          { partai: "16", grup: "A", jam: "11.50", lapangan: "Lapangan 1", timA: "Tim A2", timB: "Tim A3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "17", grup: "B", jam: "11.50", lapangan: "Lapangan 2", timA: "Tim B2", timB: "Tim B3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "18", grup: "C", jam: "11.50", lapangan: "Lapangan 3", timA: "Tim C2", timB: "Tim C3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+        ],
+        // Data Pertandingan Fase Gugur KU-10 (Slot 25 menit mulai 13.30 WIB)
+        babakGugur: {
+          QF1: { jam: "13.30", lapangan: "Lapangan 1", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          QF2: { jam: "13.30", lapangan: "Lapangan 2", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          QF3: { jam: "13.30", lapangan: "Lapangan 3", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          QF4: { jam: "13.55", lapangan: "Lapangan 1", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          SF1: { jam: "14.45", lapangan: "Lapangan 1", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          SF2: { jam: "14.45", lapangan: "Lapangan 2", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          JUARA3: { jam: "15.40", lapangan: "Lapangan 2", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          FINAL: { jam: "15.40", lapangan: "Lapangan 1", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+        },
+      },
+
+      // =======================================================================
+      // DATA KATEGORI KU-12 TAHUN (12 TIM: GRUP A, B, C)
+      // Jadwal menggunakan slot genap (08.05, 08.55, 09.45, 10.35, 11.25, 12.15)
+      // pada Lapangan 1 (Grup A), Lapangan 2 (Grup B), dan Lapangan 3 (Grup C)
+      // bergantian langsung dengan KU-10 di 3 lapangan secara bersamaan.
+      // =======================================================================
+      KU12: {
+        namaKategori: "KU-12 Tahun",
+        grup: {
+          A: ["Tim A1", "Tim A2", "Tim A3", "Tim A4"],
+          B: ["Tim B1", "Tim B2", "Tim B3", "Tim B4"],
+          C: ["Tim C1", "Tim C2", "Tim C3", "Tim C4"],
+        },
+        jadwalGrup: [
+          // Slot 2: 08.05 - 08.30 WIB
+          { partai: "01", grup: "A", jam: "08.05", lapangan: "Lapangan 1", timA: "Tim A1", timB: "Tim A2", skorA: 1, skorB: 0, kkA: 1, kmA: 0, kkB: 0, kmB: 0, status: "SELESAI" },
+          { partai: "02", grup: "B", jam: "08.05", lapangan: "Lapangan 2", timA: "Tim B1", timB: "Tim B2", skorA: 2, skorB: 2, kkA: 0, kmA: 0, kkB: 1, kmB: 0, status: "SELESAI" },
+          { partai: "03", grup: "C", jam: "08.05", lapangan: "Lapangan 3", timA: "Tim C1", timB: "Tim C2", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 4: 08.55 - 09.20 WIB
+          { partai: "04", grup: "A", jam: "08.55", lapangan: "Lapangan 1", timA: "Tim A3", timB: "Tim A4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "05", grup: "B", jam: "08.55", lapangan: "Lapangan 2", timA: "Tim B3", timB: "Tim B4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "06", grup: "C", jam: "08.55", lapangan: "Lapangan 3", timA: "Tim C3", timB: "Tim C4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 6: 09.45 - 10.10 WIB
+          { partai: "07", grup: "A", jam: "09.45", lapangan: "Lapangan 1", timA: "Tim A1", timB: "Tim A3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "08", grup: "B", jam: "09.45", lapangan: "Lapangan 2", timA: "Tim B1", timB: "Tim B3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "09", grup: "C", jam: "09.45", lapangan: "Lapangan 3", timA: "Tim C1", timB: "Tim C3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 8: 10.35 - 11.00 WIB
+          { partai: "10", grup: "A", jam: "10.35", lapangan: "Lapangan 1", timA: "Tim A2", timB: "Tim A4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "11", grup: "B", jam: "10.35", lapangan: "Lapangan 2", timA: "Tim B2", timB: "Tim B4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "12", grup: "C", jam: "10.35", lapangan: "Lapangan 3", timA: "Tim C2", timB: "Tim C4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 10: 11.25 - 11.50 WIB
+          { partai: "13", grup: "A", jam: "11.25", lapangan: "Lapangan 1", timA: "Tim A1", timB: "Tim A4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "14", grup: "B", jam: "11.25", lapangan: "Lapangan 2", timA: "Tim B1", timB: "Tim B4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "15", grup: "C", jam: "11.25", lapangan: "Lapangan 3", timA: "Tim C1", timB: "Tim C4", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+
+          // Slot 12: 12.15 - 12.40 WIB
+          { partai: "16", grup: "A", jam: "12.15", lapangan: "Lapangan 1", timA: "Tim A2", timB: "Tim A3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "17", grup: "B", jam: "12.15", lapangan: "Lapangan 2", timA: "Tim B2", timB: "Tim B3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+          { partai: "18", grup: "C", jam: "12.15", lapangan: "Lapangan 3", timA: "Tim C2", timB: "Tim C3", skorA: null, skorB: null, kkA: 0, kmA: 0, kkB: 0, kmB: 0, status: "AKAN MAIN" },
+        ],
+        // Data Pertandingan Fase Gugur KU-12 (Slot 25 menit mulai 13.55 WIB)
+        babakGugur: {
+          QF1: { jam: "13.55", lapangan: "Lapangan 2", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          QF2: { jam: "13.55", lapangan: "Lapangan 3", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          QF3: { jam: "14.20", lapangan: "Lapangan 1", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          QF4: { jam: "14.20", lapangan: "Lapangan 2", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          SF1: { jam: "15.10", lapangan: "Lapangan 1", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          SF2: { jam: "15.10", lapangan: "Lapangan 2", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          JUARA3: { jam: "16.05", lapangan: "Lapangan 2", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+          FINAL: { jam: "16.05", lapangan: "Lapangan 1", skorA: null, skorB: null, penaltiA: null, penaltiB: null },
+        },
+      },
+    };
+
+    // State tampilan aktif aplikasi
+    let stateAplikasi = {
+      kategoriAktif: "KU10",          // "KU10" atau "KU12"
+      tabAktif: "jadwal",             // "jadwal", "klasemen", atau "gugur"
+      filterLapanganJadwal: "SEMUA",  // "SEMUA", "Lapangan 1", "Lapangan 2", "Lapangan 3"
+      filterGrupJadwal: "SEMUA",      // "SEMUA", "A", "B", "C"
+      filterStatusJadwal: "SEMUA",    // "SEMUA", "AKAN MAIN", "LIVE", "SELESAI"
+      sertakanLiveKlasemen: false,    // Opsional pratinjau skor LIVE di Klasemen
+    };
+
+    // =========================================================================
+    // 0. UTILITAS WAKTU SLOT (25 MENIT) & LENCANA LAPANGAN
+    // =========================================================================
+    /**
+     * Menghitung rentang waktu slot pertandingan berdasarkan jam mulai & durasi slot.
+     * Contoh: formatRentangWaktu("07.40", 25) -> "07.40 - 08.05 WIB"
+     */
+    function formatRentangWaktu(jamMulai, durasiMenit = DATA_TURNAMEN.durasiSlotMenit || 25) {
+      if (!jamMulai) return "-";
+      const bersih = String(jamMulai).replace(/\s*WIB/i, "").trim();
+      const pemisah = bersih.includes(".") ? "." : ":";
+      const bagian = bersih.split(pemisah);
+
+      if (bagian.length < 2) return `${bersih} WIB`;
+
+      const jam = parseInt(bagian[0], 10);
+      const menit = parseInt(bagian[1], 10);
+      if (Number.isNaN(jam) || Number.isNaN(menit)) return `${bersih} WIB`;
+
+      const totalMulai = jam * 60 + menit;
+      const totalSelesai = totalMulai + Number(durasiMenit || 25);
+
+      const jamAkhir = Math.floor(totalSelesai / 60) % 24;
+      const menitAkhir = totalSelesai % 60;
+
+      const strMulai = `${String(jam).padStart(2, "0")}.${String(menit).padStart(2, "0")}`;
+      const strSelesai = `${String(jamAkhir).padStart(2, "0")}.${String(menitAkhir).padStart(2, "0")}`;
+
+      return `${strMulai} - ${strSelesai} WIB`;
+    }
+
+    /**
+     * Mengembalikan kelas warna badge sesuai lapangan (Lapangan 1, 2, 3).
+     */
+    function gayaBadgeLapangan(namaLapangan) {
+      const lap = (namaLapangan || "").toLowerCase();
+      if (lap.includes("1")) {
+        return "bg-emerald-100 text-emerald-800 border-emerald-200";
+      }
+      if (lap.includes("2")) {
+        return "bg-sky-100 text-sky-800 border-sky-200";
+      }
+      if (lap.includes("3")) {
+        return "bg-amber-100 text-amber-900 border-amber-300";
+      }
+      return "bg-slate-100 text-slate-700 border-slate-200";
+    }
+
+    // =========================================================================
+    // 1. MESIN PENGHITUNG KLASEMEN & TIE-BREAKER SESUAI REGULASI JUKNIS
+    // =========================================================================
+    /**
+     * Menghitung statistik seluruh tim di satu grup berdasarkan pertandingan SELESAI
+     * (dan opsional LIVE jika diaktifkan pada tab Klasemen).
+     */
+    function hitungStatistikGrup(namaGrup, daftarTim, jadwalGrup, sertakanLive = false) {
+      const petaTim = {};
+
+      daftarTim.forEach((nama) => {
+        petaTim[nama] = {
+          nama,
+          grup: namaGrup,
+          main: 0,
+          menang: 0,
+          seri: 0,
+          kalah: 0,
+          gm: 0,
+          gk: 0,
+          sg: 0,
+          kk: 0,
+          km: 0,
+          fairPlay: 0, // 0 dikurangi (KK * 1) dan (KM * 3)
+          poin: 0,
+        };
+      });
+
+      const statusValid = sertakanLive ? ["SELESAI", "LIVE"] : ["SELESAI"];
+
+      const lagaDihitung = jadwalGrup.filter(
+        (m) =>
+          m.grup === namaGrup &&
+          statusValid.includes((m.status || "").toUpperCase()) &&
+          m.skorA !== null &&
+          m.skorB !== null
+      );
+
+      lagaDihitung.forEach((m) => {
+        const timA = petaTim[m.timA];
+        const timB = petaTim[m.timB];
+        if (!timA || !timB) return;
+
+        const sA = Number(m.skorA);
+        const sB = Number(m.skorB);
+        const kkA = Number(m.kkA || 0);
+        const kmA = Number(m.kmA || 0);
+        const kkB = Number(m.kkB || 0);
+        const kmB = Number(m.kmB || 0);
+
+        timA.main += 1;
+        timB.main += 1;
+
+        timA.gm += sA;
+        timA.gk += sB;
+        timB.gm += sB;
+        timB.gk += sA;
+
+        timA.kk += kkA;
+        timA.km += kmA;
+        timB.kk += kkB;
+        timB.km += kmB;
+
+        if (sA > sB) {
+          timA.menang += 1;
+          timA.poin += 3;
+          timB.kalah += 1;
+        } else if (sB > sA) {
+          timB.menang += 1;
+          timB.poin += 3;
+          timA.kalah += 1;
+        } else {
+          timA.seri += 1;
+          timB.seri += 1;
+          timA.poin += 1;
+          timB.poin += 1;
+        }
+      });
+
+      const hasilArray = Object.values(petaTim).map((t) => ({
+        ...t,
+        sg: t.gm - t.gk,
+        fairPlay: -(t.kk * 1 + t.km * 3),
+      }));
+
+      return urutkanDenganTieBreaker(hasilArray, lagaDihitung);
+    }
+
+    /**
+     * Menghitung mini-klasemen Head-to-Head khusus antar tim yang memiliki poin sama.
+     */
+    function hitungMiniHeadToHead(grupSamaPoin, lagaSelesai) {
+      const namaSet = new Set(grupSamaPoin.map((t) => t.nama));
+      const h2h = {};
+
+      grupSamaPoin.forEach((t) => {
+        h2h[t.nama] = { poin: 0, gm: 0, gk: 0, sg: 0 };
+      });
+
+      lagaSelesai.forEach((m) => {
+        if (namaSet.has(m.timA) && namaSet.has(m.timB)) {
+          const sA = Number(m.skorA);
+          const sB = Number(m.skorB);
+
+          h2h[m.timA].gm += sA;
+          h2h[m.timA].gk += sB;
+          h2h[m.timB].gm += sB;
+          h2h[m.timB].gk += sA;
+
+          if (sA > sB) {
+            h2h[m.timA].poin += 3;
+          } else if (sB > sA) {
+            h2h[m.timB].poin += 3;
+          } else {
+            h2h[m.timA].poin += 1;
+            h2h[m.timB].poin += 1;
+          }
+        }
+      });
+
+      Object.keys(h2h).forEach((nama) => {
+        h2h[nama].sg = h2h[nama].gm - h2h[nama].gk;
+      });
+
+      return h2h;
+    }
+
+    /**
+     * Urutan Prioritas Tie-Breaker sesuai Juknis:
+     * Poin -> Head-to-Head -> Selisih Gol -> Produktivitas Gol -> Fair Play
+     */
+    function urutkanDenganTieBreaker(daftarTim, lagaSelesai) {
+      const kelompokPoin = {};
+      daftarTim.forEach((tim) => {
+        if (!kelompokPoin[tim.poin]) kelompokPoin[tim.poin] = [];
+        kelompokPoin[tim.poin].push(tim);
+      });
+
+      const daftarPoinTerurut = Object.keys(kelompokPoin)
+        .map(Number)
+        .sort((a, b) => b - a);
+
+      const hasilAkhir = [];
+
+      daftarPoinTerurut.forEach((nilaiPoin) => {
+        const grupSamaPoin = kelompokPoin[nilaiPoin];
+
+        if (grupSamaPoin.length === 1) {
+          hasilAkhir.push(grupSamaPoin[0]);
+        } else {
+          const dataH2H = hitungMiniHeadToHead(grupSamaPoin, lagaSelesai);
+
+          grupSamaPoin.sort((a, b) => {
+            // Prioritas 2: Head-to-Head
+            const hA = dataH2H[a.nama];
+            const hB = dataH2H[b.nama];
+            if (hB.poin !== hA.poin) return hB.poin - hA.poin;
+            if (hB.sg !== hA.sg) return hB.sg - hA.sg;
+            if (hB.gm !== hA.gm) return hB.gm - hA.gm;
+
+            // Prioritas 3: Selisih Gol keseluruhan
+            if (b.sg !== a.sg) return b.sg - a.sg;
+
+            // Prioritas 4: Produktivitas Gol keseluruhan
+            if (b.gm !== a.gm) return b.gm - a.gm;
+
+            // Prioritas 5: Poin Fair Play
+            if (b.fairPlay !== a.fairPlay) return b.fairPlay - a.fairPlay;
+
+            return a.nama.localeCompare(b.nama);
+          });
+
+          hasilAkhir.push(...grupSamaPoin);
+        }
+      });
+
+      return hasilAkhir;
+    }
+
+    /**
+     * Menghitung klasemen seluruh grup dan menentukan 2 Peringkat 3 Terbaik.
+     */
+    function hitungSemuaKlasemenKategori(dataKat, sertakanLive = false) {
+      const klasemenA = hitungStatistikGrup("A", dataKat.grup.A, dataKat.jadwalGrup, sertakanLive);
+      const klasemenB = hitungStatistikGrup("B", dataKat.grup.B, dataKat.jadwalGrup, sertakanLive);
+      const klasemenC = hitungStatistikGrup("C", dataKat.grup.C, dataKat.jadwalGrup, sertakanLive);
+
+      // Peringkat ke-3 dari tiap grup (indeks 2)
+      const kandidatPeringkat3 = [klasemenA[2], klasemenB[2], klasemenC[2]].filter(Boolean);
+
+      // Urutkan Peringkat 3 Terbaik berdasarkan Poin -> SG -> GM -> Fair Play
+      const peringkat3Terbaik = [...kandidatPeringkat3].sort((a, b) => {
+        if (b.poin !== a.poin) return b.poin - a.poin;
+        if (b.sg !== a.sg) return b.sg - a.sg;
+        if (b.gm !== a.gm) return b.gm - a.gm;
+        if (b.fairPlay !== a.fairPlay) return b.fairPlay - a.fairPlay;
+        return a.grup.localeCompare(b.grup);
+      });
+
+      return {
+        A: klasemenA,
+        B: klasemenB,
+        C: klasemenC,
+        peringkat3Terbaik,
+      };
+    }
+
+    // =========================================================================
+    // 2. KONTROL INTERAKSI NAVIGASI & FILTER
+    // =========================================================================
+    function pilihKategori(kategori) {
+      stateAplikasi.kategoriAktif = kategori;
+      stateAplikasi.filterLapanganJadwal = "SEMUA";
+      stateAplikasi.filterGrupJadwal = "SEMUA";
+      stateAplikasi.filterStatusJadwal = "SEMUA";
+      renderAplikasi();
+    }
+
+    function pilihTab(tab) {
+      stateAplikasi.tabAktif = tab;
+      renderAplikasi();
+    }
+
+    function pilihFilterLapangan(lapangan) {
+      stateAplikasi.filterLapanganJadwal = lapangan;
+      renderAplikasi();
+    }
+
+    function pilihFilterGrup(grup) {
+      stateAplikasi.filterGrupJadwal = grup;
+      renderAplikasi();
+    }
+
+    function pilihFilterStatus(status) {
+      stateAplikasi.filterStatusJadwal = status;
+      renderAplikasi();
+    }
+
+    function ubahModeLiveKlasemen(aktif) {
+      stateAplikasi.sertakanLiveKlasemen = Boolean(aktif);
+      renderAplikasi();
+    }
+
+    // =========================================================================
+    // 3. RENDER ANTARMUKA (UI)
+    // =========================================================================
+    function perbaruiGayaNavigasi() {
+      const { kategoriAktif, tabAktif } = stateAplikasi;
+
+      // Gaya Pill Kategori KU-10 / KU-12
+      ["KU10", "KU12"].forEach((kat) => {
+        const btn = document.getElementById(`btn-kat-${kat}`);
+        if (kat === kategoriAktif) {
+          btn.className =
+            "flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl font-extrabold text-sm sm:text-base transition-all cursor-pointer border-2 bg-emerald-800 border-emerald-800 text-white shadow-md";
+        } else {
+          btn.className =
+            "flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl font-bold text-sm sm:text-base transition-all cursor-pointer border-2 bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100 hover:border-slate-300";
+        }
+      });
+
+      // Gaya Sub-Tab Jadwal & Hasil / Klasemen Live / Babak Gugur
+      ["jadwal", "klasemen", "gugur"].forEach((tab) => {
+        const btn = document.getElementById(`btn-tab-${tab}`);
+        if (tab === tabAktif) {
+          btn.className =
+            "py-2 px-2 rounded-xl text-xs sm:text-sm font-extrabold transition-all cursor-pointer text-center bg-slate-900 text-amber-300 shadow-sm";
+        } else {
+          btn.className =
+            "py-2 px-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer text-center bg-slate-100 text-slate-600 hover:bg-slate-200";
+        }
+      });
+    }
+
+    /**
+     * Render Tab 1: Jadwal & Hasil (dengan Filter Lapangan, Grup & Status,
+     * serta pengelompokan otomatis per slot waktu 25 menit)
+     */
+    function renderTabJadwal(dataKat) {
+      const { filterLapanganJadwal, filterGrupJadwal, filterStatusJadwal } = stateAplikasi;
+
+      const daftarLaga = dataKat.jadwalGrup.filter((m) => {
+        const cocokLapangan =
+          filterLapanganJadwal === "SEMUA" ||
+          (m.lapangan || "").toLowerCase() === filterLapanganJadwal.toLowerCase();
+        const cocokGrup = filterGrupJadwal === "SEMUA" || m.grup === filterGrupJadwal;
+        const statusNormal = (m.status || "AKAN MAIN").toUpperCase();
+        const cocokStatus = filterStatusJadwal === "SEMUA" || statusNormal === filterStatusJadwal;
+        return cocokLapangan && cocokGrup && cocokStatus;
+      });
+
+      // Tombol Filter Lapangan (3 Lapangan)
+      const opsiLapangan = [
+        { kode: "SEMUA", label: "Semua Lapangan" },
+        { kode: "Lapangan 1", label: "Lapangan 1" },
+        { kode: "Lapangan 2", label: "Lapangan 2" },
+        { kode: "Lapangan 3", label: "Lapangan 3" },
+      ];
+
+      const tombolFilterLapangan = opsiLapangan
+        .map((item) => {
+          const aktif = filterLapanganJadwal === item.kode;
+          const gaya = aktif
+            ? "bg-teal-800 text-white border-teal-800 shadow-sm"
+            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50";
+          return `
+            <button
+              onclick="pilihFilterLapangan('${item.kode}')"
+              class="px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer shrink-0 ${gaya}"
+            >
+              ${item.kode === "SEMUA" ? item.label : `🏟️ ${item.label}`}
+            </button>
+          `;
+        })
+        .join("");
+
+      // Tombol Filter Grup
+      const tombolFilterGrup = ["SEMUA", "A", "B", "C"]
+        .map((kode) => {
+          const label = kode === "SEMUA" ? "Semua Grup" : `Grup ${kode}`;
+          const aktif = filterGrupJadwal === kode;
+          const gaya = aktif
+            ? "bg-emerald-800 text-white border-emerald-800 shadow-sm"
+            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50";
+          return `
+            <button
+              onclick="pilihFilterGrup('${kode}')"
+              class="px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer shrink-0 ${gaya}"
+            >
+              ${label}
+            </button>
+          `;
+        })
+        .join("");
+
+      // Tombol Filter Status
+      const opsiStatus = [
+        { kode: "SEMUA", label: "Semua Status" },
+        { kode: "AKAN MAIN", label: "Akan Main" },
+        { kode: "LIVE", label: "Live" },
+        { kode: "SELESAI", label: "Selesai" },
+      ];
+
+      const tombolFilterStatus = opsiStatus
+        .map((item) => {
+          const aktif = filterStatusJadwal === item.kode;
+          const gaya = aktif
+            ? "bg-slate-900 text-amber-300 border-slate-900 shadow-sm"
+            : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50";
+          return `
+            <button
+              onclick="pilihFilterStatus('${item.kode}')"
+              class="px-3 py-1.5 rounded-xl text-xs font-bold border transition cursor-pointer shrink-0 ${gaya}"
+            >
+              ${item.label}
+            </button>
+          `;
+        })
+        .join("");
+
+      // Fungsi pembentuk satu kartu pertandingan
+      const buatKartuPertandingan = (m) => {
+        const statusUpper = (m.status || "AKAN MAIN").toUpperCase();
+        const isSelesai = statusUpper === "SELESAI" && m.skorA !== null && m.skorB !== null;
+        const isLive = statusUpper === "LIVE";
+        const tampilkanSkor = (isSelesai || isLive) && m.skorA !== null && m.skorB !== null;
+        const rentangWaktu = formatRentangWaktu(m.jam);
+        const warnaLapangan = gayaBadgeLapangan(m.lapangan);
+
+        let badgeStatus = `<span class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-slate-100 text-slate-600 border border-slate-200">AKAN MAIN</span>`;
+        let borderKartu = "border-slate-200";
+
+        if (isSelesai) {
+          badgeStatus = `<span class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-200">SELESAI</span>`;
+          borderKartu = "border-emerald-200";
+        } else if (isLive) {
+          badgeStatus = `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-extrabold bg-rose-100 text-rose-700 border border-rose-200 animate-pulse"><span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>LIVE</span>`;
+          borderKartu = "border-rose-300 ring-1 ring-rose-100";
+        }
+
+        // Info Kartu Kuning & Kartu Merah jika ada
+        const totalKartu = (m.kkA || 0) + (m.kmA || 0) + (m.kkB || 0) + (m.kmB || 0);
+        const blokKartu =
+          totalKartu > 0
+            ? `
+              <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                <div class="flex items-center gap-2">
+                  ${m.kkA > 0 ? `<span class="inline-flex items-center gap-1 font-bold text-amber-700"><span class="w-2.5 h-3.5 bg-amber-400 rounded-[2px] inline-block shadow-xs"></span>${m.kkA}</span>` : ""}
+                  ${m.kmA > 0 ? `<span class="inline-flex items-center gap-1 font-bold text-rose-700"><span class="w-2.5 h-3.5 bg-rose-600 rounded-[2px] inline-block shadow-xs"></span>${m.kmA}</span>` : ""}
+                  ${(m.kkA || 0) === 0 && (m.kmA || 0) === 0 ? `<span class="text-slate-300">-</span>` : ""}
+                </div>
+                <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Disiplin Kartu</span>
+                <div class="flex items-center gap-2">
+                  ${m.kkB > 0 ? `<span class="inline-flex items-center gap-1 font-bold text-amber-700"><span class="w-2.5 h-3.5 bg-amber-400 rounded-[2px] inline-block shadow-xs"></span>${m.kkB}</span>` : ""}
+                  ${m.kmB > 0 ? `<span class="inline-flex items-center gap-1 font-bold text-rose-700"><span class="w-2.5 h-3.5 bg-rose-600 rounded-[2px] inline-block shadow-xs"></span>${m.kmB}</span>` : ""}
+                  ${(m.kkB || 0) === 0 && (m.kmB || 0) === 0 ? `<span class="text-slate-300">-</span>` : ""}
+                </div>
+              </div>
+            `
+            : "";
+
+        return `
+          <div class="bg-white rounded-2xl border ${borderKartu} p-3.5 sm:p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+              <!-- Baris Atas: Nomor Match, Grup & Lencana Lapangan -->
+              <div class="flex flex-wrap items-center justify-between gap-1.5 text-xs text-slate-500 mb-2.5">
+                <div class="flex items-center gap-1.5">
+                  <span class="bg-slate-900 text-white px-2 py-0.5 rounded-md font-extrabold text-[11px]">Match #${m.partai}</span>
+                  <span class="bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded-md font-bold text-[11px]">Grup ${m.grup}</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-md font-extrabold text-[11px] border ${warnaLapangan}">
+                  🏟️ ${m.lapangan}
+                </span>
+              </div>
+
+              <!-- Sub-baris Slot Waktu 25 Menit -->
+              <div class="mb-3 flex items-center gap-1.5 text-[11px] font-bold text-slate-600 bg-slate-50 px-2.5 py-1 rounded-lg border border-slate-100">
+                <span>🕒</span>
+                <span>${rentangWaktu}</span>
+                <span class="ml-auto text-[10px] font-semibold text-slate-400">${DATA_TURNAMEN.durasiSlotMenit} Menit</span>
+              </div>
+
+              <!-- Baris Tengah: Nama Tim & Skor -->
+              <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+                <div class="text-right">
+                  <p class="font-extrabold text-sm text-slate-900 leading-snug">${m.timA}</p>
+                </div>
+
+                <div class="flex flex-col items-center justify-center min-w-[82px]">
+                  ${
+                    tampilkanSkor
+                      ? `<div class="${isLive ? "bg-rose-950 text-white" : "bg-slate-900 text-white"} px-3 py-1.5 rounded-xl font-black text-base sm:text-lg tracking-wider shadow-inner">
+                          ${m.skorA} <span class="text-slate-400 mx-0.5">-</span> ${m.skorB}
+                        </div>`
+                      : `<div class="bg-slate-100 text-slate-500 border border-slate-200 px-3 py-1.5 rounded-xl font-extrabold text-xs tracking-widest">
+                          VS
+                        </div>`
+                  }
+                  <div class="mt-1.5">${badgeStatus}</div>
+                </div>
+
+                <div class="text-left">
+                  <p class="font-extrabold text-sm text-slate-900 leading-snug">${m.timB}</p>
+                </div>
+              </div>
+            </div>
+
+            ${blokKartu}
+          </div>
+        `;
+      };
+
+      // Pengelompokan jadwal berdasarkan slot waktu (25 menit)
+      let kontenJadwal = "";
+      if (daftarLaga.length === 0) {
+        kontenJadwal = `
+          <div class="bg-white rounded-2xl border border-slate-200 p-8 text-center">
+            <p class="text-sm font-bold text-slate-700">Tidak ada pertandingan yang sesuai dengan filter.</p>
+            <p class="text-xs text-slate-500 mt-1">Silakan pilih filter lapangan, grup, atau status lainnya.</p>
+          </div>
+        `;
+      } else {
+        const kelompokSlot = [];
+        const petaSlot = new Map();
+
+        daftarLaga.forEach((m) => {
+          const kunciSlot = m.jam || "Lainnya";
+          if (!petaSlot.has(kunciSlot)) {
+            const grupBaru = { jam: kunciSlot, laga: [] };
+            petaSlot.set(kunciSlot, grupBaru);
+            kelompokSlot.push(grupBaru);
+          }
+          petaSlot.get(kunciSlot).laga.push(m);
+        });
+
+        kontenJadwal = kelompokSlot
+          .map((slot) => {
+            const labelSlot = formatRentangWaktu(slot.jam);
+            const jumlahLapanganAktif = slot.laga.length;
+            return `
+              <div class="space-y-2.5">
+                <div class="flex flex-wrap items-center justify-between gap-2 px-1">
+                  <div class="inline-flex items-center gap-2">
+                    <span class="w-2 h-5 rounded-full bg-emerald-700"></span>
+                    <h3 class="font-extrabold text-xs sm:text-sm text-slate-900 tracking-wide">
+                      🕒 Slot ${labelSlot}
+                    </h3>
+                  </div>
+                  <span class="text-[11px] font-semibold text-slate-500">
+                    ${jumlahLapanganAktif} Pertandingan Serentak
+                  </span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                  ${slot.laga.map(buatKartuPertandingan).join("")}
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+      }
+
+      return `
+        <section class="space-y-4">
+          <!-- Panel Filter Lapangan, Grup & Status -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-3 sm:p-3.5 shadow-sm space-y-2.5">
+            <!-- Baris Filter Lapangan (3 Lapangan) -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1">
+              ${tombolFilterLapangan}
+            </div>
+
+            <!-- Baris Filter Grup & Status -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-slate-100">
+              <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+                ${tombolFilterGrup}
+              </div>
+              <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+                ${tombolFilterStatus}
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 font-medium">
+              <span>Kategori: <strong class="text-slate-800">${dataKat.namaKategori}</strong> &bull; Durasi Slot: <strong class="text-slate-800">${DATA_TURNAMEN.durasiSlotMenit} Menit</strong></span>
+              <span>Menampilkan <strong class="text-slate-900">${daftarLaga.length}</strong> pertandingan</span>
+            </div>
+          </div>
+
+          <!-- Daftar Pertandingan Terkelompok per Slot Waktu -->
+          <div class="space-y-5">
+            ${kontenJadwal}
+          </div>
+        </section>
+      `;
+    }
+
+    /**
+     * Render Tab 2: Klasemen Live (Grup A, B, C + Peringkat 3 Terbaik)
+     */
+    function renderTabKlasemen(dataKat) {
+      const hasil = hitungSemuaKlasemenKategori(dataKat, stateAplikasi.sertakanLiveKlasemen);
+      const duaPeringkat3Lolos = new Set(hasil.peringkat3Terbaik.slice(0, 2).map((t) => t.nama));
+      const adaPertandinganLive = dataKat.jadwalGrup.some(
+        (m) => (m.status || "").toUpperCase() === "LIVE"
+      );
+
+      const buatTabelGrup = (kodeGrup, daftarTim) => {
+        const baris = daftarTim
+          .map((t, index) => {
+            const pos = index + 1;
+            const isJuaraGrup = pos === 1;
+            const isRunnerUp = pos === 2;
+            const isPeringkat3Lolos = pos === 3 && duaPeringkat3Lolos.has(t.nama);
+
+            let gayaBaris = "bg-white hover:bg-slate-50";
+            let badgePos = "bg-slate-100 text-slate-700";
+            let badgeLolos = "";
+
+            if (isJuaraGrup) {
+              gayaBaris = "bg-emerald-50/80 hover:bg-emerald-50";
+              badgePos = "bg-emerald-700 text-white";
+              badgeLolos = `<span class="inline-block mt-0.5 sm:mt-0 sm:ml-2 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-200">Lolos 8 Besar (Juara Grup)</span>`;
+            } else if (isRunnerUp) {
+              gayaBaris = "bg-sky-50/75 hover:bg-sky-50";
+              badgePos = "bg-sky-700 text-white";
+              badgeLolos = `<span class="inline-block mt-0.5 sm:mt-0 sm:ml-2 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 border border-sky-200">Lolos 8 Besar (Runner-Up)</span>`;
+            } else if (isPeringkat3Lolos) {
+              gayaBaris = "bg-amber-50/70 hover:bg-amber-50";
+              badgePos = "bg-amber-500 text-slate-950";
+              badgeLolos = `<span class="inline-block mt-0.5 sm:mt-0 sm:ml-2 text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">Lolos 8 Besar (Peringkat 3)</span>`;
+            }
+
+            const sgTeks = t.sg > 0 ? `+${t.sg}` : `${t.sg}`;
+            const detailKartu = t.kk > 0 || t.km > 0 ? `<span class="block text-[10px] text-slate-400">K:${t.kk} M:${t.km}</span>` : "";
+
+            return `
+              <tr class="border-b border-slate-100 transition ${gayaBaris}">
+                <td class="py-2.5 pl-3 pr-1.5 text-center font-bold">
+                  <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-extrabold ${badgePos}">
+                    ${pos}
+                  </span>
+                </td>
+                <td class="py-2.5 px-2 font-extrabold text-slate-900">
+                  <div class="flex flex-col sm:flex-row sm:items-center">
+                    <span class="whitespace-nowrap">${t.nama}</span>
+                    ${badgeLolos}
+                  </div>
+                </td>
+                <td class="py-2.5 px-2 text-center font-semibold text-slate-600">${t.main}</td>
+                <td class="py-2.5 px-2 text-center font-semibold text-emerald-700">${t.menang}</td>
+                <td class="py-2.5 px-2 text-center font-semibold text-slate-600">${t.seri}</td>
+                <td class="py-2.5 px-2 text-center font-semibold text-rose-600">${t.kalah}</td>
+                <td class="py-2.5 px-2 text-center text-slate-600">${t.gm}</td>
+                <td class="py-2.5 px-2 text-center text-slate-600">${t.gk}</td>
+                <td class="py-2.5 px-2 text-center font-bold ${t.sg > 0 ? "text-emerald-700" : t.sg < 0 ? "text-rose-600" : "text-slate-600"}">${sgTeks}</td>
+                <td class="py-2.5 px-2 text-center text-xs font-semibold text-slate-600 whitespace-nowrap">
+                  <span>${t.fairPlay}</span>
+                  ${detailKartu}
+                </td>
+                <td class="py-2.5 pl-2 pr-3 text-center">
+                  <span class="inline-block min-w-[28px] py-0.5 px-1.5 rounded-lg bg-slate-900 text-white font-black text-xs sm:text-sm">
+                    ${t.poin}
+                  </span>
+                </td>
+              </tr>
+            `;
+          })
+          .join("");
+
+        return `
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="bg-gradient-to-r from-emerald-950 to-emerald-900 text-white px-4 py-3 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+                <h3 class="font-extrabold text-sm sm:text-base tracking-wide">KLASEMEN GRUP ${kodeGrup}</h3>
+              </div>
+              <span class="text-[11px] text-emerald-200 font-semibold">${dataKat.namaKategori}</span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs sm:text-sm text-left border-collapse">
+                <thead>
+                  <tr class="bg-slate-50 text-slate-500 border-b border-slate-200 text-[11px] uppercase tracking-wider">
+                    <th class="py-2.5 pl-3 pr-1.5 text-center font-bold">Pos</th>
+                    <th class="py-2.5 px-2 font-bold">Tim</th>
+                    <th class="py-2.5 px-2 text-center font-bold">Main</th>
+                    <th class="py-2.5 px-2 text-center font-bold">M</th>
+                    <th class="py-2.5 px-2 text-center font-bold">S</th>
+                    <th class="py-2.5 px-2 text-center font-bold">K</th>
+                    <th class="py-2.5 px-2 text-center font-bold">GM</th>
+                    <th class="py-2.5 px-2 text-center font-bold">GK</th>
+                    <th class="py-2.5 px-2 text-center font-bold">SG</th>
+                    <th class="py-2.5 px-2 text-center font-bold" title="Poin Fair Play">FP</th>
+                    <th class="py-2.5 pl-2 pr-3 text-center font-extrabold text-slate-900">Poin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${baris}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        `;
+      };
+
+      // Tabel Klasemen Peringkat 3 Terbaik (2 Terbaik Lolos)
+      const barisPeringkat3 = hasil.peringkat3Terbaik
+        .map((t, idx) => {
+          const rank = idx + 1;
+          const lolos = rank <= 2;
+          const sgTeks = t.sg > 0 ? `+${t.sg}` : `${t.sg}`;
+          const detailKartu = t.kk > 0 || t.km > 0 ? `<span class="block text-[10px] text-slate-400">K:${t.kk} M:${t.km}</span>` : "";
+
+          return `
+            <tr class="border-b border-slate-100 transition ${lolos ? "bg-amber-50/75 hover:bg-amber-50" : "bg-white hover:bg-slate-50"}">
+              <td class="py-2.5 pl-3 pr-1.5 text-center font-bold">
+                <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg text-xs font-extrabold ${lolos ? "bg-amber-500 text-slate-950" : "bg-slate-200 text-slate-700"}">
+                  ${rank}
+                </span>
+              </td>
+              <td class="py-2.5 px-2 font-extrabold text-slate-900">
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <span class="whitespace-nowrap">${t.nama}</span>
+                  <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-700">Grup ${t.grup}</span>
+                  ${
+                    lolos
+                      ? `<span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-500 text-slate-950">Lolos 8 Besar</span>`
+                      : `<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">Peringkat 3</span>`
+                  }
+                </div>
+              </td>
+              <td class="py-2.5 px-2 text-center font-semibold text-slate-600">${t.main}</td>
+              <td class="py-2.5 px-2 text-center font-semibold text-emerald-700">${t.menang}</td>
+              <td class="py-2.5 px-2 text-center font-semibold text-slate-600">${t.seri}</td>
+              <td class="py-2.5 px-2 text-center font-semibold text-rose-600">${t.kalah}</td>
+              <td class="py-2.5 px-2 text-center text-slate-600">${t.gm}</td>
+              <td class="py-2.5 px-2 text-center text-slate-600">${t.gk}</td>
+              <td class="py-2.5 px-2 text-center font-bold ${t.sg > 0 ? "text-emerald-700" : t.sg < 0 ? "text-rose-600" : "text-slate-600"}">${sgTeks}</td>
+              <td class="py-2.5 px-2 text-center text-xs font-semibold text-slate-600 whitespace-nowrap">
+                <span>${t.fairPlay}</span>
+                ${detailKartu}
+              </td>
+              <td class="py-2.5 pl-2 pr-3 text-center">
+                <span class="inline-block min-w-[28px] py-0.5 px-1.5 rounded-lg ${lolos ? "bg-amber-600 text-white" : "bg-slate-800 text-white"} font-black text-xs sm:text-sm">
+                  ${t.poin}
+                </span>
+              </td>
+            </tr>
+          `;
+        })
+        .join("");
+
+      return `
+        <section class="space-y-5">
+          ${
+            adaPertandinganLive
+              ? `
+              <div class="bg-white rounded-2xl border border-slate-200 px-4 py-3 flex flex-wrap items-center justify-between gap-2 shadow-sm">
+                <div class="flex items-center gap-2 text-xs text-slate-700">
+                  <span class="w-2 h-2 rounded-full bg-rose-600 animate-ping"></span>
+                  <span>Terdapat pertandingan <strong>LIVE</strong> pada ${dataKat.namaKategori}.</span>
+                </div>
+                <label class="inline-flex items-center gap-2 text-xs font-bold text-slate-800 cursor-pointer select-none">
+                  <input
+                    type="checkbox"
+                    ${stateAplikasi.sertakanLiveKlasemen ? "checked" : ""}
+                    onchange="ubahModeLiveKlasemen(this.checked)"
+                    class="rounded border-slate-300 text-emerald-700 focus:ring-emerald-600 cursor-pointer"
+                  />
+                  <span>Hitung skor LIVE sementara</span>
+                </label>
+              </div>
+              `
+              : ""
+          }
+
+          <!-- Tabel Klasemen Grup A, B, C -->
+          ${buatTabelGrup("A", hasil.A)}
+          ${buatTabelGrup("B", hasil.B)}
+          ${buatTabelGrup("C", hasil.C)}
+
+          <!-- Tabel Klasemen Peringkat 3 Terbaik (2 Terbaik Lolos) -->
+          <div class="bg-white rounded-2xl border-2 border-amber-300 shadow-sm overflow-hidden">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="text-amber-400 text-base">★</span>
+                <h3 class="font-extrabold text-sm sm:text-base tracking-wide">KLASEMEN PERINGKAT 3 TERBAIK (2 TERBAIK LOLOS)</h3>
+              </div>
+              <span class="text-[11px] bg-amber-400/20 border border-amber-400/40 text-amber-200 px-2.5 py-0.5 rounded-full font-bold">
+                Tiket 8 Besar
+              </span>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-xs sm:text-sm text-left border-collapse">
+                <thead>
+                  <tr class="bg-amber-50/60 text-slate-600 border-b border-amber-100 text-[11px] uppercase tracking-wider">
+                    <th class="py-2.5 pl-3 pr-1.5 text-center font-bold">Pos</th>
+                    <th class="py-2.5 px-2 font-bold">Tim</th>
+                    <th class="py-2.5 px-2 text-center font-bold">Main</th>
+                    <th class="py-2.5 px-2 text-center font-bold">M</th>
+                    <th class="py-2.5 px-2 text-center font-bold">S</th>
+                    <th class="py-2.5 px-2 text-center font-bold">K</th>
+                    <th class="py-2.5 px-2 text-center font-bold">GM</th>
+                    <th class="py-2.5 px-2 text-center font-bold">GK</th>
+                    <th class="py-2.5 px-2 text-center font-bold">SG</th>
+                    <th class="py-2.5 px-2 text-center font-bold">FP</th>
+                    <th class="py-2.5 pl-2 pr-3 text-center font-extrabold text-slate-900">Poin</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${barisPeringkat3}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Keterangan Singkat Aturan Tie-Breaker -->
+          <div class="bg-white rounded-2xl border border-slate-200 p-4 text-xs text-slate-600 space-y-2 shadow-sm">
+            <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm uppercase tracking-wide">Ketentuan Klasemen &amp; Tie-Breaker</h4>
+            <div class="flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded bg-emerald-600 inline-block"></span>
+                <span>Juara Grup (Lolos 8 Besar)</span>
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded bg-sky-600 inline-block"></span>
+                <span>Runner-Up Grup (Lolos 8 Besar)</span>
+              </span>
+              <span class="inline-flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded bg-amber-500 inline-block"></span>
+                <span>2 Peringkat 3 Terbaik (Lolos 8 Besar)</span>
+              </span>
+            </div>
+            <p class="leading-relaxed text-slate-500">
+              <strong>Poin:</strong> Menang = 3, Seri = 1, Kalah = 0.
+              <strong>Urutan Penentuan Peringkat:</strong> (1) Poin tertinggi &rarr; (2) <em>Head-to-Head</em> &rarr; (3) Selisih Gol (SG) &rarr; (4) Produktivitas Gol (GM) &rarr; (5) Poin <em>Fair Play</em> / FP (Kartu Kuning = -1, Kartu Merah = -3).
+            </p>
+          </div>
+        </section>
+      `;
+    }
+
+    /**
+     * Menentukan pemenang babak gugur berdasarkan skor normal dan penalti (jika imbang).
+     */
+    function tentukanPemenangGugur(namaA, namaB, laga) {
+      if (!laga || laga.skorA === null || laga.skorB === null) {
+        return { pemenang: null, kalah: null };
+      }
+      const sA = Number(laga.skorA);
+      const sB = Number(laga.skorB);
+
+      if (sA > sB) return { pemenang: namaA, kalah: namaB };
+      if (sB > sA) return { pemenang: namaB, kalah: namaA };
+
+      // Jika skor imbang, cek skor penalti
+      if (laga.penaltiA !== null && laga.penaltiB !== null) {
+        const pA = Number(laga.penaltiA);
+        const pB = Number(laga.penaltiB);
+        if (pA > pB) return { pemenang: namaA, kalah: namaB };
+        if (pB > pA) return { pemenang: namaB, kalah: namaA };
+      }
+
+      return { pemenang: null, kalah: null };
+    }
+
+    /**
+     * Render Tab 3: Babak Gugur (8 Besar, Semifinal, Perebutan Juara 3, Final)
+     */
+    function renderTabBabakGugur(dataKat) {
+      const hasil = hitungSemuaKlasemenKategori(dataKat, stateAplikasi.sertakanLiveKlasemen);
+      const bg = dataKat.babakGugur;
+
+      const semuaGrupSelesai = dataKat.jadwalGrup.every(
+        (m) => (m.status || "").toUpperCase() === "SELESAI"
+      );
+
+      // Penempatan 8 tim lolos ke Babak Perempat Final (QF 1 - QF 4)
+      const qf1A = { slot: "Juara Grup A", tim: hasil.A[0]?.nama || "-" };
+      const qf1B = { slot: "Peringkat 3 Terbaik 1", tim: hasil.peringkat3Terbaik[0]?.nama || "-" };
+
+      const qf2A = { slot: "Juara Grup B", tim: hasil.B[0]?.nama || "-" };
+      const qf2B = { slot: "Runner-Up Grup C", tim: hasil.C[1]?.nama || "-" };
+
+      const qf3A = { slot: "Juara Grup C", tim: hasil.C[0]?.nama || "-" };
+      const qf3B = { slot: "Peringkat 3 Terbaik 2", tim: hasil.peringkat3Terbaik[1]?.nama || "-" };
+
+      const qf4A = { slot: "Runner-Up Grup A", tim: hasil.A[1]?.nama || "-" };
+      const qf4B = { slot: "Runner-Up Grup B", tim: hasil.B[1]?.nama || "-" };
+
+      const hQF1 = tentukanPemenangGugur(qf1A.tim, qf1B.tim, bg.QF1);
+      const hQF2 = tentukanPemenangGugur(qf2A.tim, qf2B.tim, bg.QF2);
+      const hQF3 = tentukanPemenangGugur(qf3A.tim, qf3B.tim, bg.QF3);
+      const hQF4 = tentukanPemenangGugur(qf4A.tim, qf4B.tim, bg.QF4);
+
+      const sf1A = { slot: "Pemenang QF 1", tim: hQF1.pemenang || "Pemenang QF 1" };
+      const sf1B = { slot: "Pemenang QF 2", tim: hQF2.pemenang || "Pemenang QF 2" };
+
+      const sf2A = { slot: "Pemenang QF 3", tim: hQF3.pemenang || "Pemenang QF 3" };
+      const sf2B = { slot: "Pemenang QF 4", tim: hQF4.pemenang || "Pemenang QF 4" };
+
+      const hSF1 = tentukanPemenangGugur(sf1A.tim, sf1B.tim, bg.SF1);
+      const hSF2 = tentukanPemenangGugur(sf2A.tim, sf2B.tim, bg.SF2);
+
+      const j3A = { slot: "Kalah SF 1", tim: hSF1.kalah || "Kalah SF 1" };
+      const j3B = { slot: "Kalah SF 2", tim: hSF2.kalah || "Kalah SF 2" };
+
+      const finA = { slot: "Pemenang SF 1", tim: hSF1.pemenang || "Pemenang SF 1" };
+      const finB = { slot: "Pemenang SF 2", tim: hSF2.pemenang || "Pemenang SF 2" };
+
+      const buatKartuGugur = (judulLaga, timKiri, timKanan, infoLaga, isFinal = false) => {
+        const adaSkor = infoLaga && infoLaga.skorA !== null && infoLaga.skorB !== null;
+        const adaPenalti =
+          adaSkor && infoLaga.penaltiA !== null && infoLaga.penaltiB !== null;
+        const hasilLaga = tentukanPemenangGugur(timKiri.tim, timKanan.tim, infoLaga);
+        const rentangWaktu = formatRentangWaktu(infoLaga.jam);
+        const warnaLapangan = gayaBadgeLapangan(infoLaga.lapangan);
+
+        const borderUtama = isFinal
+          ? "border-2 border-amber-400 bg-gradient-to-b from-amber-50/70 to-white"
+          : "border border-slate-200 bg-white";
+
+        return `
+          <div class="rounded-2xl ${borderUtama} p-3.5 sm:p-4 shadow-sm">
+            <div class="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 mb-3">
+              <span class="font-extrabold px-2.5 py-0.5 rounded-md ${isFinal ? "bg-amber-400 text-slate-950" : "bg-slate-900 text-white"}">
+                ${judulLaga}
+              </span>
+              <div class="flex items-center gap-1.5">
+                <span class="font-semibold text-slate-600">🕒 ${rentangWaktu}</span>
+                <span class="px-2 py-0.5 rounded-md font-extrabold border ${warnaLapangan}">🏟️ ${infoLaga.lapangan}</span>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <!-- Tim Atas -->
+              <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl border ${hasilLaga.pemenang === timKiri.tim ? "bg-emerald-50 border-emerald-200" : "bg-slate-50 border-slate-100"}">
+                <div>
+                  <span class="block text-[10px] font-bold uppercase tracking-wider text-emerald-700">${timKiri.slot}</span>
+                  <span class="font-extrabold text-sm text-slate-900">${timKiri.tim}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  ${adaPenalti ? `<span class="text-[11px] font-bold text-slate-500">(${infoLaga.penaltiA})</span>` : ""}
+                  <span class="w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm ${adaSkor ? "bg-slate-900 text-white" : "bg-white border border-slate-200 text-slate-400"}">
+                    ${adaSkor ? infoLaga.skorA : "-"}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Tim Bawah -->
+              <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl border ${hasilLaga.pemenang === timKanan.tim ? "bg-emerald-50 border-emerald-200" : "bg-slate-50 border-slate-100"}">
+                <div>
+                  <span class="block text-[10px] font-bold uppercase tracking-wider text-sky-700">${timKanan.slot}</span>
+                  <span class="font-extrabold text-sm text-slate-900">${timKanan.tim}</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  ${adaPenalti ? `<span class="text-[11px] font-bold text-slate-500">(${infoLaga.penaltiB})</span>` : ""}
+                  <span class="w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm ${adaSkor ? "bg-slate-900 text-white" : "bg-white border border-slate-200 text-slate-400"}">
+                    ${adaSkor ? infoLaga.skorB : "-"}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      };
+
+      return `
+        <section class="space-y-6">
+          <!-- Header Status Fase Gugur -->
+          <div class="bg-gradient-to-r from-emerald-950 to-emerald-900 text-white rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 shadow-sm">
+            <div>
+              <h3 class="font-extrabold text-sm sm:text-base tracking-wide">BAGAN FASE GUGUR &bull; ${dataKat.namaKategori.toUpperCase()}</h3>
+              <p class="text-xs text-emerald-200 mt-0.5">
+                ${
+                  semuaGrupSelesai
+                    ? "Fase grup telah selesai. Berikut daftar resmi 8 tim yang melaju ke fase gugur."
+                    : "Susunan tim di bawah ini diperbarui otomatis berdasarkan klasemen sementara."
+                }
+              </p>
+            </div>
+            <span class="self-start sm:self-center text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full bg-emerald-950/80 border border-amber-400/40 text-amber-300">
+              ${semuaGrupSelesai ? "Klasemen Final" : "Proyeksi Live"}
+            </span>
+          </div>
+
+          <!-- 1. BABAK 8 BESAR (PEREMPAT FINAL) -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-5 rounded-full bg-emerald-700"></span>
+              <h4 class="font-extrabold text-sm sm:text-base text-slate-900 uppercase tracking-wide">Babak 8 Besar (Perempat Final)</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              ${buatKartuGugur("PEREMPAT FINAL 1 (QF 1)", qf1A, qf1B, bg.QF1)}
+              ${buatKartuGugur("PEREMPAT FINAL 2 (QF 2)", qf2A, qf2B, bg.QF2)}
+              ${buatKartuGugur("PEREMPAT FINAL 3 (QF 3)", qf3A, qf3B, bg.QF3)}
+              ${buatKartuGugur("PEREMPAT FINAL 4 (QF 4)", qf4A, qf4B, bg.QF4)}
+            </div>
+          </div>
+
+          <!-- 2. BABAK SEMIFINAL -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-5 rounded-full bg-sky-600"></span>
+              <h4 class="font-extrabold text-sm sm:text-base text-slate-900 uppercase tracking-wide">Babak Semifinal</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              ${buatKartuGugur("SEMIFINAL 1 (SF 1)", sf1A, sf1B, bg.SF1)}
+              ${buatKartuGugur("SEMIFINAL 2 (SF 2)", sf2A, sf2B, bg.SF2)}
+            </div>
+          </div>
+
+          <!-- 3. PEREBUTAN JUARA 3 & GRAND FINAL -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-5 rounded-full bg-amber-500"></span>
+              <h4 class="font-extrabold text-sm sm:text-base text-slate-900 uppercase tracking-wide">Perebutan Juara 3 &amp; Partai Final</h4>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+              ${buatKartuGugur("PEREBUTAN JUARA 3", j3A, j3B, bg.JUARA3)}
+              ${buatKartuGugur("🏆 GRAND FINAL", finA, finB, bg.FINAL, true)}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    /**
+     * Render Utama Aplikasi
+     */
+    function renderAplikasi() {
+      perbaruiGayaNavigasi();
+
+      const dataKat = DATA_TURNAMEN[stateAplikasi.kategoriAktif];
+      const wadah = document.getElementById("konten-utama");
+
+      if (stateAplikasi.tabAktif === "jadwal") {
+        wadah.innerHTML = renderTabJadwal(dataKat);
+      } else if (stateAplikasi.tabAktif === "klasemen") {
+        wadah.innerHTML = renderTabKlasemen(dataKat);
+      } else if (stateAplikasi.tabAktif === "gugur") {
+        wadah.innerHTML = renderTabBabakGugur(dataKat);
+      }
+    }
+
+    // =========================================================================
+    // 4. SINKRONISASI GOOGLE SHEETS OPSIONAL (CSV)
+    // =========================================================================
+    async function muatDataGoogleSheetsJikaAda() {
+      const url = (DATA_TURNAMEN.googleSheetCsvUrl || "").trim();
+      if (!url) return;
+
+      const banner = document.getElementById("status-sinkronisasi");
+
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Gagal mengambil data CSV");
+        const teksCsv = await res.text();
+        const baris = teksCsv
+          .split(/\r?\n/)
+          .map((b) => b.trim())
+          .filter(Boolean);
+
+        if (baris.length < 2) return;
+
+        // Format Header CSV:
+        // kategori,fase,partai,grup,jam,lapangan,timA,timB,skorA,skorB,kkA,kmA,kkB,kmB,status
+        const jadwalBaru = { KU10: [], KU12: [] };
+        const grupSet = {
+          KU10: { A: new Set(), B: new Set(), C: new Set() },
+          KU12: { A: new Set(), B: new Set(), C: new Set() },
+        };
+
+        for (let i = 1; i < baris.length; i++) {
+          const kol = baris[i].split(",").map((v) => v.trim().replace(/^"|"$/g, ""));
+          const [kategori, fase, partai, grup, jam, lapangan, timA, timB, skorA, skorB, kkA, kmA, kkB, kmB, status] = kol;
+
+          if (kategori !== "KU10" && kategori !== "KU12") continue;
+
+          const faseUpper = (fase || "").toUpperCase();
+
+          if (faseUpper === "GRUP" && ["A", "B", "C"].includes(grup)) {
+            if (timA) grupSet[kategori][grup].add(timA);
+            if (timB) grupSet[kategori][grup].add(timB);
+
+            jadwalBaru[kategori].push({
+              partai: partai || String(i).padStart(2, "0"),
+              grup,
+              jam: jam || "07.40",
+              lapangan: lapangan || "Lapangan 1",
+              timA,
+              timB,
+              skorA: skorA !== "" && skorA !== undefined ? Number(skorA) : null,
+              skorB: skorB !== "" && skorB !== undefined ? Number(skorB) : null,
+              kkA: Number(kkA || 0),
+              kmA: Number(kmA || 0),
+              kkB: Number(kkB || 0),
+              kmB: Number(kmB || 0),
+              status: (status || "AKAN MAIN").toUpperCase(),
+            });
+          } else if (faseUpper === "GUGUR" && DATA_TURNAMEN[kategori].babakGugur[grup]) {
+            DATA_TURNAMEN[kategori].babakGugur[grup] = {
+              jam: jam || DATA_TURNAMEN[kategori].babakGugur[grup].jam,
+              lapangan: lapangan || DATA_TURNAMEN[kategori].babakGugur[grup].lapangan,
+              skorA: skorA !== "" && skorA !== undefined ? Number(skorA) : null,
+              skorB: skorB !== "" && skorB !== undefined ? Number(skorB) : null,
+              penaltiA: kkA !== "" && kkA !== undefined ? Number(kkA) : null,
+              penaltiB: kkB !== "" && kkB !== undefined ? Number(kkB) : null,
+            };
+          }
+        }
+
+        ["KU10", "KU12"].forEach((kat) => {
+          if (jadwalBaru[kat].length > 0) {
+            DATA_TURNAMEN[kat].jadwalGrup = jadwalBaru[kat];
+            ["A", "B", "C"].forEach((g) => {
+              if (grupSet[kat][g].size > 0) {
+                DATA_TURNAMEN[kat].grup[g] = Array.from(grupSet[kat][g]);
+              }
+            });
+          }
+        });
+
+        banner.className =
+          "mb-4 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-between gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800";
+        banner.innerHTML = `<span>🟢 Data pertandingan tersinkronisasi secara langsung</span><button onclick="muatDataGoogleSheetsJikaAda().then(renderAplikasi)" class="underline font-bold cursor-pointer">Perbarui</button>`;
+      } catch (err) {
+        banner.className =
+          "mb-4 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium flex items-center justify-between gap-2 bg-amber-50 border border-amber-200 text-amber-800";
+        banner.innerHTML = `<span>⚠️ Menampilkan jadwal cadangan lokal.</span>`;
+      }
+    }
+
+    // Inisialisasi saat dokumen selesai dimuat
+    window.addEventListener("DOMContentLoaded", async () => {
+      renderAplikasi();
+      await muatDataGoogleSheetsJikaAda();
+      renderAplikasi();
+    });
+  </script>
+</body>
+</html>
